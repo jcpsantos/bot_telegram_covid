@@ -50,7 +50,7 @@ def base_grafico():
 
 def start(update, context):
     update.message.reply_text('Olá você estará recebendo atualizações dos dados sobre a COVID 19  no Brasil.\nPara receber as atualizações sobre uma cidade especifica \nDigite /cidade <nome da cidade> \nEx.: /cidade Salvador\nPara parar as atualizações\nDigite /stop \nPara receber dados de Covid19 no Brasil imediatamente \nDigite /brasil \nPara receber um gráfico com a atualização dos casos nos últimos 7 dias: \nDigite /grafico \n\n Fonte de Dados \nMinistério da Saúde e Secretárias Estaduais \nhttps://covid19br.wcota.me/ \nhttps://brasil.io/dataset/covid19/caso_full/')
-    new_job = context.job_queue.run_repeating(callback_br, context=update.message.chat_id, interval=28800)
+    new_job = context.job_queue.run_repeating(callback_br, context=update.message.chat_id, interval=14400)
     context.chat_data['job'] = new_job
 
 def unknown(update, context):
