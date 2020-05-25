@@ -1,4 +1,4 @@
-ntplib==0.3.3
+ntplib==0.3.4
 numpy==1.17.0
 pandas==1.0.3
 pandocfilters==1.4.2
