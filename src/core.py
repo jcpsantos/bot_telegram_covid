@@ -52,8 +52,8 @@ def start(update, context):
     dados = base_br()
     date = str(dados['date']).split("-")
     update.message.reply_text('Olá você estará recebendo atualizações dos dados sobre a COVID 19  no Brasil.\nPara receber as atualizações sobre uma cidade especifica \nDigite /cidade <nome da cidade> \nEx.: /cidade Salvador\nPara parar as atualizações\nDigite /stop \nPara receber dados de Covid19 no Brasil imediatamente \nDigite /brasil \nPara receber um gráfico com a atualização dos casos nos últimos 7 dias: \nDigite /grafico \n\n Fonte de Dados \nMinistério da Saúde e Secretárias Estaduais \nhttps://covid19br.wcota.me/ \nhttps://brasil.io/dataset/covid19/caso_full/')
-    update.message.reply_text("Covid19 no Brasil \n\nData de Atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\n\nCasos Confirmados: "+str(dados['totalCases'])+"\n\nÓbitos: "+str(dados['deaths'])+"\n\nRecuperados: "+str(int(dados['recovered']))+"\n\nSuspeitos: "+str(int(dados['suspects']))+"\n\nTestes: "+str(int(dados['tests']))+"\n\nNovos Casos: "+str(dados['newCases'])+"\nNovos Óbtios: "+str(dados['newDeaths'])+"\n\nCasos por 100 mil Hab.:"+str(round(float(dados['totalCases_per_100k_inhabitants']), 2))+"\n\nÓbitos por 100 mil Hab.: "+str(round(float(dados['deaths_per_100k_inhabitants']), 2))+"\n\nTestes por 100 mil Hab.: "+str(round(float(dados['tests_per_100k_inhabitants']), 2)))
-    new_job = context.job_queue.run_repeating(callback_br, context=update.message.chat_id, interval=14400)
+    update.message.reply_text("Covid19 no Brasil \n\nData de Atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\n\nCasos Confirmados: "+str(dados['totalCases'])+"\n\nÓbitos: "+str(dados['deaths'])+"\n\nRecuperados: "+str(int(dados['recovered']))+"\n\nSuspeitos: "+str(int(dados['suspects']))+"\n\nTestes: "+str(int(dados['tests']))+"\n\nNovos Casos: "+str(dados['newCases'])+"\n\nNovos Óbitos: "+str(dados['newDeaths'])+"\n\nCasos por 100 mil Hab.:"+str(round(float(dados['totalCases_per_100k_inhabitants']), 2))+"\n\nÓbitos por 100 mil Hab.: "+str(round(float(dados['deaths_per_100k_inhabitants']), 2))+"\n\nTestes por 100 mil Hab.: "+str(round(float(dados['tests_per_100k_inhabitants']), 2)))
+    new_job = context.job_queue.run_repeating(callback_br, context=update.message.chat_id, interval=28800)
     context.chat_data['job'] = new_job
 
 def unknown(update, context):
@@ -66,7 +66,7 @@ def unknown(update, context):
 def now(update, context):
     dados = base_br()
     date = str(dados['date']).split("-")
-    response_message = "Covid19 no Brasil \n\nData de Atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\n\nCasos Confirmados: "+str(dados['totalCases'])+"\n\nÓbitos: "+str(dados['deaths'])+"\n\nRecuperados: "+str(int(dados['recovered']))+"\n\nSuspeitos: "+str(int(dados['suspects']))+"\n\nTestes: "+str(int(dados['tests']))+"\n\nNovos Casos: "+str(dados['newCases'])+"\nNovos Óbtios: "+str(dados['newDeaths'])+"\n\nCasos por 100 mil Hab.:"+str(round(float(dados['totalCases_per_100k_inhabitants']), 2))+"\n\nÓbitos por 100 mil Hab.: "+str(round(float(dados['deaths_per_100k_inhabitants']), 2))+"\n\nTestes por 100 mil Hab.: "+str(round(float(dados['tests_per_100k_inhabitants']), 2))
+    response_message = "Covid19 no Brasil \n\nData de Atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\n\nCasos Confirmados: "+str(dados['totalCases'])+"\n\nÓbitos: "+str(dados['deaths'])+"\n\nRecuperados: "+str(int(dados['recovered']))+"\n\nSuspeitos: "+str(int(dados['suspects']))+"\n\nTestes: "+str(int(dados['tests']))+"\n\nNovos Casos: "+str(dados['newCases'])+"\n\nNovos Óbitos: "+str(dados['newDeaths'])+"\n\nCasos por 100 mil Hab.:"+str(round(float(dados['totalCases_per_100k_inhabitants']), 2))+"\n\nÓbitos por 100 mil Hab.: "+str(round(float(dados['deaths_per_100k_inhabitants']), 2))+"\n\nTestes por 100 mil Hab.: "+str(round(float(dados['tests_per_100k_inhabitants']), 2))
     grf = base_grafico()
     context.bot.send_message(
         chat_id=update.message.chat_id,
@@ -89,19 +89,15 @@ def callback_br(context: CallbackContext):
     dados = base_br()
     date = str(dados['date']).split("-")
     grf = base_grafico()
-    response_message = "Covid19 no Brasil \n\nData de Atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\n\nCasos Confirmados: "+str(dados['totalCases'])+"\n\nÓbitos: "+str(dados['deaths'])+"\n\nRecuperados: "+str(int(dados['recovered']))+"\n\nSuspeitos: "+str(int(dados['suspects']))+"\n\nTestes: "+str(int(dados['tests']))+"\n\nNovos Casos: "+str(dados['newCases'])+"\n\nNovos Óbtios: "+str(dados['newDeaths'])+"\n\nCasos por 100 mil Hab.:"+str(round(float(dados['totalCases_per_100k_inhabitants']), 2))+"\n\nÓbitos por 100 mil Hab.: "+str(round(float(dados['deaths_per_100k_inhabitants']), 2))+"\n\nTestes por 100 mil Hab.: "+str(round(float(dados['tests_per_100k_inhabitants']), 2))
+    response_message = "Covid19 no Brasil \n\nData de Atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\n\nCasos Confirmados: "+str(dados['totalCases'])+"\n\nÓbitos: "+str(dados['deaths'])+"\n\nRecuperados: "+str(int(dados['recovered']))+"\n\nSuspeitos: "+str(int(dados['suspects']))+"\n\nTestes: "+str(int(dados['tests']))+"\n\nNovos Casos: "+str(dados['newCases'])+"\n\nNovos Óbitos: "+str(dados['newDeaths'])+"\n\nCasos por 100 mil Hab.:"+str(round(float(dados['totalCases_per_100k_inhabitants']), 2))+"\n\nÓbitos por 100 mil Hab.: "+str(round(float(dados['deaths_per_100k_inhabitants']), 2))+"\n\nTestes por 100 mil Hab.: "+str(round(float(dados['tests_per_100k_inhabitants']), 2))
     context.bot.send_message(job.context, text=response_message)
-    context.bot.sendPhoto(
-        chat_id=update.message.chat_id,
-        photo=open(grf, 'rb')
-    )
 
 def city(update,context):
     citys = context.args
     city = ' '.join(str(e) for e in citys)
     try:
         date = str(base(city)[0]['date']).split("-")
-        response_message = "Cidade: "+str(base(city)[0]['city']) +"\nData da atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\nCasos Confirmados: "+str(base(city)[0]['confirmed'])+"\nÓbitos: "+str(base(city)[0]['deaths'])+"\nPopulação estimada: "+str(base(city)[0]['estimated_population_2019'])+"\nCasos por 100 mil Hab.: "+str(base(city)[0]['confirmed_per_100k_inhabitants'])
+        response_message = "Cidade: "+str(base(city)[0]['city']) +"\nData da atualização: "+str(date[2])+"-"+str(date[1])+"-"+str(date[0])+"\nCasos Confirmados: "+str(base(city)[0]['confirmed'])+"\nÓbitos: "+str(base(city)[0]['deaths'])+"\nPopulação estimada: "+str(base(city)[0]['estimated_population_2019'])+"\nCasos por 100 mil Hab.: "+str(round(float(base(city)[0]['confirmed_per_100k_inhabitants']), 2))
         update.message.reply_text('Olá você estará recebendo dados sobre a COVID 19 em '+str(base(city)[0]['city']))
         context.bot.send_message(chat_id = update.effective_chat.id , text=response_message)
     except (IndexError, ValueError):
